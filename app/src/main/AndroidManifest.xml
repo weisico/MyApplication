@@ -8,7 +8,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        >
+        <!-- 主活动-->
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -19,15 +21,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- 主活动的一个子活动-->
         <activity
             android:name=".DisplayMessageActivity"
             android:label="@string/title_activity_display_message"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
+            <!--  meta-data 用于支持 support 4.0 以及以下来指明上级活动 -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.weisico.myapplication.MainActivity" />
         </activity>
+        <activity android:name=".HomeActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:parentActivityName=".MainActivity">
+
+        </activity>
     </application>
+
 
 </manifest>

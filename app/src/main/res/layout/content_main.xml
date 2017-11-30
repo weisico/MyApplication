@@ -8,12 +8,12 @@
     tools:context="com.weisico.myapplication.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/activity_main">
         <EditText
@@ -26,8 +26,59 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_send"
+            android:layout_alignParentRight="true"
             android:onClick="sendMessage"/>
+        <TextView
+            android:id="@+id/pls"
+            android:layout_marginTop="100sp"
+            android:text="pls input content"
+            android:textSize="30sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/UsName"
+            android:text="UserName"
+            android:textSize="25sp"
+            android:layout_below="@id/pls"
+            android:layout_alignBaseline="@id/username"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/username"
+            android:textSize="25sp"
+            android:hint="pls username"
+            android:layout_below="@id/pls"
+            android:layout_toRightOf="@id/UsName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/UsPsw"
+            android:text="Password"
+            android:textSize="25sp"
+            android:layout_below="@id/pls"
+            android:layout_alignBaseline="@id/password"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/password"
+            android:inputType="textPassword"
+            android:textSize="25sp"
+            android:hint="pls password"
+            android:layout_below="@id/username"
+            android:layout_toRightOf="@id/UsPsw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/BtnOk"
+            android:textSize="30sp"
+            android:text="登陆"
+            android:layout_below="@id/password"
+            android:layout_margin="10dp"
 
-    </LinearLayout>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

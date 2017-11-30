@@ -9,10 +9,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
+    private Button btnOk;
+    private EditText EdUsername,Edpassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +32,29 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        EdUsername=(EditText)findViewById(R.id.username);
+        Edpassword=(EditText)findViewById(R.id.password);
+        btnOk=(Button)findViewById(R.id.BtnOk);
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String username=EdUsername.getText().toString();
+                String password=Edpassword.getText().toString();
+                if(username.equals("admin")&&password.equals("123"))
+                {
+                    Toast.makeText(MainActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
+                    Intent i=new Intent();//定义INTENT
+                    i.setClass(MainActivity.this,HomeActivity.class);
+                    i.putExtra(EXTRA_MESSAGE, username);
+                    startActivity(i);//Intent对象启动
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this, "登陆失败", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
     }
 
     @Override
@@ -42,14 +69,24 @@ public class MainActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+        switch (item.getItemId()){
+            case R.id.action_search:
+//                openSearch();
+                return  true;
+            case R.id.action_settings:
+//                openSettings();
+                return true;
+                default:
+                    return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
     }
     public final static String EXTRA_MESSAGE = "com.weisico.myapplication.MESSAGE";
     /** Called when the user clicks the Send button */
@@ -61,4 +98,6 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
+
+
 }
